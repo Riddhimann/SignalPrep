@@ -1,0 +1,35 @@
+ROLE
+Data Scientist supporting customer, risk, and operational analytics in a regulated financial-services environment.
+
+MODELLING RESPONSIBILITIES
+Design, develop, validate, and deploy classification, regression, and clustering models. Explain algorithm selection, assumptions, limitations, and business impact.
+
+DATA PREPARATION
+Perform data extraction, cleaning, exploratory analysis, feature engineering, and validation using Python, Pandas, NumPy, and SQL.
+
+BIG DATA
+Build scalable data pipelines and machine-learning features using PySpark, Spark, Hadoop, and cloud data platforms.
+
+MODEL EVALUATION
+Use cross-validation, ROC-AUC, precision, recall, F1-score, calibration, hypothesis testing, and controlled experiments to evaluate solutions.
+
+GENAI AND NLP
+Develop NLP, LLM, and retrieval-augmented generation solutions with prompt engineering, grounded answers, citations, and structured outputs.
+
+AGENTIC SYSTEMS
+Develop controlled agentic workflows using tool calling, validation, verification, retry policies, LangChain, or Google Agent Development Kit.
+
+DEPLOYMENT
+Develop reliable FastAPI services, containerize workloads with Docker, and monitor latency, failures, model quality, and data quality in production.
+
+BUSINESS COLLABORATION
+Work with business stakeholders, engineers, and data scientists to frame problems, define measurable success criteria, and deliver actionable recommendations.
+
+COMMUNICATION
+Communicate analytical findings, experiments, limitations, and model results to technical and non-technical audiences through reports, presentations, and visualizations.
+
+CORE REQUIREMENTS
+Python, SQL, statistics, machine learning, experimentation, communication, analytical problem solving, and strong attention to detail.
+
+PREFERRED EXPERIENCE
+Git, AWS, Azure, GCP, Spark, Hadoop, Tableau, Power BI, deep learning, NLP, LLM applications, RAG, MLOps, and data-science project experience.

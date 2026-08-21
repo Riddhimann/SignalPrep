@@ -1,0 +1,14 @@
+DATA SCIENTIST
+
+RESPONSIBILITIES
+- Build and validate machine learning models for customer and operational use cases.
+- Use Python and SQL to prepare data, analyze experiments, and communicate insights.
+- Deploy reliable APIs and monitor model and data quality in production.
+- Partner with product and business stakeholders to define measurable success criteria.
+
+REQUIRED SKILLS
+Python, SQL, machine learning, statistics, experimentation, communication
+
+PREFERRED SKILLS
+FastAPI, Docker, cloud platforms, NLP, LLM applications, RAG, MLOps
+

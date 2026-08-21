@@ -1,0 +1,56 @@
+[
+  {
+    "id":"a01_strong",
+    "pair":"a01",
+    "quality":"strong",
+    "question":"Tell me about a classification model you validated and deployed.",
+    "transcript":"I developed a customer-retention classifier using SQL-derived behavioural features. I used time-based validation to prevent leakage, compared ROC-AUC and F1, calibrated probabilities, and selected a threshold against outreach capacity. I deployed it through FastAPI in Docker and monitored drift and delayed-label performance. The pilot improved successful retention outreach by 12 percent.",
+    "query":"churn model validation calibration deployment",
+    "expected_min_average":7.0
+  },
+  {
+    "id":"a01_weak",
+    "pair":"a01",
+    "quality":"weak",
+    "question":"Tell me about a classification model you validated and deployed.",
+    "transcript":"I made a machine learning model in Python. It worked well and then we used it.",
+    "query":"churn model validation calibration deployment",
+    "expected_max_average":6.0
+  },
+  {
+    "id":"a02_strong",
+    "pair":"a02",
+    "quality":"strong",
+    "question":"Describe an experiment you designed for a business decision.",
+    "transcript":"For an onboarding redesign, I aligned with product on conversion as the primary metric and selected guardrails for complaints and completion time. I calculated sample size, checked randomization balance, ran the A/B test to the planned horizon, and presented the lift with confidence intervals and limitations. The team used the result to decide whether to expand the workflow.",
+    "query":"A/B test onboarding primary metric guardrails sample size",
+    "expected_min_average":7.0
+  },
+  {
+    "id":"a02_weak",
+    "pair":"a02",
+    "quality":"weak",
+    "question":"Describe an experiment you designed for a business decision.",
+    "transcript":"We tested two versions and picked the better one. Stakeholders liked the result.",
+    "query":"A/B test onboarding primary metric guardrails sample size",
+    "expected_max_average":6.0
+  },
+  {
+    "id":"a03_strong",
+    "pair":"a03",
+    "quality":"strong",
+    "question":"How did you make a RAG application reliable?",
+    "transcript":"I combined dense and lexical retrieval, required explicit evidence IDs in structured outputs, rejected unknown citations, and added prompt-injection indicators. I evaluated retrieval with labelled queries and reviewed unsupported answers through a feedback queue. I monitored schema failures and latency separately so higher grounding did not hide operational cost.",
+    "query":"grounded RAG citations prompt injection structured outputs",
+    "expected_min_average":7.0
+  },
+  {
+    "id":"a03_weak",
+    "pair":"a03",
+    "quality":"weak",
+    "question":"How did you make a RAG application reliable?",
+    "transcript":"I connected an LLM to documents and used a vector database. It answered questions.",
+    "query":"grounded RAG citations prompt injection structured outputs",
+    "expected_max_average":6.0
+  }
+]

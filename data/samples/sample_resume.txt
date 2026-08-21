@@ -1,0 +1,19 @@
+RIDDHI SHARMA
+Data Scientist
+
+SKILLS
+Python, SQL, scikit-learn, FastAPI, Docker, statistics, machine learning, RAG
+
+EXPERIENCE
+Built a Python document-processing pipeline that indexed 100,000 support articles and reduced
+median search latency by 38%. Designed offline retrieval evaluation with 60 labeled queries,
+measured Recall@5, and reviewed failure cases with product stakeholders.
+
+Developed a churn model with scikit-learn and SQL features. Used time-based validation to avoid
+leakage, calibrated probabilities, and deployed the model behind a FastAPI service in Docker.
+The pilot improved successful retention outreach by 12% over the prior rule-based workflow.
+
+PROJECTS
+Created a grounded RAG assistant with explicit citations, schema-validated outputs, prompt-injection
+defenses, and a human feedback loop. Added latency and structured-output monitoring.
+
