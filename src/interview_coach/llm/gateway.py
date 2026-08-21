@@ -283,6 +283,12 @@ class OpenAICompatibleGateway:
                     raise StructuredOutputError(
                         f"Model returned invalid structured output after {attempt + 1} attempts"
                     ) from exc
+            except httpx.HTTPStatusError as exc:
+                detail = exc.response.text.strip().replace("\n", " ")[:500]
+                raise StructuredOutputError(
+                    f"LLM provider returned HTTP {exc.response.status_code}"
+                    f"{': ' + detail if detail else ''}"
+                ) from exc
             except httpx.HTTPError as exc:
                 raise StructuredOutputError(f"LLM request failed: {type(exc).__name__}") from exc
         raise StructuredOutputError("Structured generation failed")
