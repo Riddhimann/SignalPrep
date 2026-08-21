@@ -224,6 +224,9 @@ class OpenAICompatibleGateway:
         self._seed = settings.llm_seed
         self._max_retries = settings.llm_max_retries
         self.structured_output_mode = settings.llm_structured_output_mode
+        self._reasoning_effort = settings.llm_reasoning_effort
+        if not self._reasoning_effort and "qwen" in self._model.lower():
+            self._reasoning_effort = "none"
 
     async def generate_structured(
         self, system_prompt: str, user_prompt: str, output_schema: type[T]
@@ -255,20 +258,29 @@ class OpenAICompatibleGateway:
                                 "schema": output_schema.model_json_schema(),
                             },
                         }
+                    payload: dict[str, Any] = {
+                        "model": self._model,
+                        "messages": messages,
+                        "temperature": 0,
+                        "seed": self._seed,
+                        "max_completion_tokens": self._max_tokens,
+                        "response_format": response_format,
+                    }
+                    if self._reasoning_effort:
+                        payload["reasoning_effort"] = self._reasoning_effort
                     response = await client.post(
                         self._url,
                         headers=headers,
-                        json={
-                            "model": self._model,
-                            "messages": messages,
-                            "temperature": 0,
-                            "seed": self._seed,
-                            "max_tokens": self._max_tokens,
-                            "response_format": response_format,
-                        },
+                        json=payload,
                     )
                     if (
-                        response.status_code in {408, 429, 500, 502, 503, 504}
+                        (
+                            response.status_code in {408, 429, 500, 502, 503, 504}
+                            or (
+                                response.status_code == 400
+                                and "json_validate_failed" in response.text
+                            )
+                        )
                         and attempt < self._max_retries
                     ):
                         await asyncio.sleep(0.5 * (2**attempt))

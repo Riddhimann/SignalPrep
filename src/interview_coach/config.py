@@ -43,6 +43,7 @@ class Settings:
     llm_seed: int = 42
     llm_max_retries: int = 2
     llm_structured_output_mode: str = "json_schema"
+    llm_reasoning_effort: str = ""
     retrieval_backend: str = "lexical_demo"
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     stt_model_size: str = "small"
@@ -77,6 +78,7 @@ class Settings:
             llm_structured_output_mode=os.getenv(
                 "LLM_STRUCTURED_OUTPUT_MODE", "json_schema"
             ).strip(),
+            llm_reasoning_effort=os.getenv("LLM_REASONING_EFFORT", "").strip(),
             retrieval_backend=os.getenv("RETRIEVAL_BACKEND", "hybrid_ollama").strip(),
             embedding_model=os.getenv(
                 "EMBEDDING_MODEL",
@@ -126,6 +128,10 @@ class Settings:
         if self.llm_structured_output_mode not in {"json_schema", "json_object"}:
             raise ConfigurationError(
                 "LLM_STRUCTURED_OUTPUT_MODE must be json_schema or json_object"
+            )
+        if self.llm_reasoning_effort not in {"", "none", "default", "low", "medium", "high"}:
+            raise ConfigurationError(
+                "LLM_REASONING_EFFORT must be empty, none, default, low, medium, or high"
             )
         if self.session_backend not in {"memory", "upstash_redis"}:
             raise ConfigurationError("SESSION_BACKEND must be memory or upstash_redis")
