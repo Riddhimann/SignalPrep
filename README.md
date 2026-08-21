@@ -7,6 +7,17 @@ rubric, selects bounded follow-ups, and produces a coaching report without makin
 The portfolio runtime uses a real local language model and hybrid retrieval by default. Deterministic
 rules remain available only as a clearly labeled offline test/demo path.
 
+## Live demo
+
+[Launch SignalPrep](https://signal-prep.vercel.app/) or inspect its
+[runtime health and provenance](https://signal-prep.vercel.app/api/health).
+
+The public Vercel profile uses hosted Qwen inference through Groq, lexical TF-IDF retrieval, and
+typed answers. It is intentionally separate from the measured local Qwen 2.5 3B + hybrid-BGE
+profile below. The current public deployment keeps active sessions in function memory, so a cold
+start can reset an unfinished interview; the repository also includes an optional expiring Upstash
+REST backend for cross-instance continuity.
+
 ## Measured real-model result
 
 A frozen evaluation used local `qwen2.5:3b`, BGE embeddings, temperature 0, seed 42, and the synthetic
@@ -49,7 +60,7 @@ human-rated dataset. Read the
 - Versioned evaluation corpus, real-model evaluation runner, tests, linting, CI, Dockerfile, and
   Compose configuration.
 - A Vercel demo profile with a static React build, serverless FastAPI entry point, hosted-model
-  adapter, and expiring Upstash state that can survive function-instance changes.
+  adapter, and optional expiring Upstash state for function-instance changes.
 
 ## Quick start on Windows
 
@@ -102,9 +113,10 @@ Important boundaries:
 - Sessions are process-local and in memory; production deployment still needs authentication,
   persistent storage, tenant isolation, quotas, encryption, and deletion workflows.
 
-The local runtime above uses process memory. The optional Vercel profile uses expiring Upstash
-storage for serverless continuity; it is still a public portfolio demo rather than a multi-tenant
-production service. See the [deployment guide](docs/deployment.md).
+The local runtime above and the current public demo use process memory. The Vercel profile can use
+expiring Upstash storage for serverless continuity when its Redis environment variables are
+configured; it is still a public portfolio demo rather than a multi-tenant production service. See
+the [deployment guide](docs/deployment.md).
 
 See [architecture](docs/architecture.md), [model/system card](MODEL_CARD.md), and
 [interview learning guide](docs/interview_learning_guide.md).
