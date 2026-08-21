@@ -38,6 +38,11 @@ all = [
 [project.scripts]
 signalprep-api = "interview_coach.api.app:run"
 
+[tool.vercel]
+# Avoid ambiguity with the legacy root app.py debugging adapter. Vercel should
+# package this ASGI application as the public Python function.
+entrypoint = "api.index:app"
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/interview_coach"]
 
